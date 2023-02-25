@@ -1,0 +1,123 @@
+.chart-container {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px 0;
+
+  .year-options {
+    display: flex;
+    justify-content: center;
+  }
+
+  .year-container {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 16px;
+    margin: auto;
+
+    ion-button {
+      border-bottom: 2px solid transparent;
+
+      &.active {
+        border-bottom: 2px solid var(--ion-color-primary);
+      }
+    }
+
+    .right-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .grid-container {
+    overflow: auto;
+    padding: 10px 0;
+
+    .row {
+      display: inline-flex;
+      padding: 0 20px;
+
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 20px;
+        min-height: 20px;
+        margin: 2px;
+        font-size: 16px;
+        font-weight: bold;
+        border: 1px solid #333;
+        color: #fff;
+        text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+
+        &:not(.hidden):hover {
+          cursor: pointer;
+          opacity: .8;
+        }
+
+        &.hidden {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .legend-container {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    flex-wrap: wrap;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 4px 8px;
+
+      .color-box {
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .chart-container {
+    .grid-container {
+      .row {
+        .cell {
+          border: 1px solid #ddd;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .chart-container {
+    align-items: center;
+
+    // show the year container for bigger displays
+    .year-container {
+      display: flex;
+      margin: 0;
+    }
+    // and hide the mobile year options
+    .year-options {
+      display: none;
+    }
+  }
+  .grid-container {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .legend-container {
+    margin-top: 220px;
+  }
+}
